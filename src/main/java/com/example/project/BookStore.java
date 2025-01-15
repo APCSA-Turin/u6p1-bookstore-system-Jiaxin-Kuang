@@ -2,6 +2,10 @@ package com.example.project;
 
 public class BookStore{
     
+    /*
+     * books is a dyanmic array with no null values that'll change its length each time a book is added, removed, or inserted
+     * users is a static array with a length of 10 unless setUsers changes its length
+     */
     Book[] books = new Book[0];
     User[] users = new User[10];
 
@@ -24,7 +28,7 @@ public class BookStore{
         return books;
     }
 
-    //Adds parameter to the first null value
+    //Adds user parameter to the first null value
     public void addUser(User user){
         for(int i = 0; i < users.length; i ++){
             if(users[i] == null){
@@ -34,7 +38,7 @@ public class BookStore{
         }
     } 
 
-    //Changes parameter to null 
+    //Changes user parameter to null 
     public void removeUser(User user){
         for(int i = 0; i < users.length; i ++){
             if(users[i] == user){
@@ -47,7 +51,9 @@ public class BookStore{
         
     /*
     Moves all non-null items to the front of users.
-    
+        1. Creates an empty User[] called udpateUsers that has the same length as users
+        2. Loops through all items in users, and if the current item isn't null, it'll be added as the next item of updateUsers
+        3. Sets users to updateUsers
     */
     public void consolidateUsers(){ 
         User[] updateUsers = new User[users.length];
@@ -61,7 +67,14 @@ public class BookStore{
         users = updateUsers;
     }
 
-
+    /* 
+    Adds the book parameter to the end of books
+        1. Creates an empty Book[] called updateBooks that has a length one greater than books
+        2. Loops through books, adding each item to updateBooks
+        3. Last item of updateBooks is set to the book parameter
+        4. Books is set to updateBooks
+     * 
+     */
     public void addBook(Book book){
         Book[] updateBooks = new Book[books.length + 1];
         for(int i = 0; i < books.length; i ++){
@@ -71,6 +84,13 @@ public class BookStore{
         books = updateBooks;
     }
 
+    /*
+     * Decreases the quantity of the book parameter by 1 if the current quantity is 1 or more. If the quantity is 0, the book parameter will be removed from books 
+     * Checks if the book parameter's quantity is greater than 0, if so, decreases quantity by 1
+     * After the changes, if book quantity is 0, an empty Book[] called updateBooks will be initialized with a length one less than books
+     * Loops through all items inside of books, adding them into updateBooks unless they're equivalent to the book parameter
+     * Sets books to updateBooks
+     */
     public void removeBook(Book book){
         if(book.getQuantity() > 0){
             book.setQuantity(book.getQuantity() - 1);
@@ -90,10 +110,10 @@ public class BookStore{
 
     /*Inserts a book inside of books at a specific index
      * 
-     * Firstly, a new Book array called updateBooks is created with a length 1 greater than books
-     * Then, a for loop adds the values 
-     * After that, updateBooks at the specific index is set to book
-     * Lastly, ...
+     * Firstly, an empty Book[] called updateBooks is created with a length 1 greater than books
+     * Then, a for loop adds all the items between 0 and index - 1 in books to updateBooks
+     * After that, updateBooks at the specific index is set to the book parameter
+     * Lastly, a for loop adds all the items after index in books to updateBooks and books is set to updateBooks
      */
     public void insertBook(Book book, int index){
         Book[] updateBooks = new Book[books.length + 1];
@@ -107,6 +127,9 @@ public class BookStore{
         books = updateBooks;
     }
        
+    /*
+     * Returns a String about books by looping through each item in books and using bookInfo()
+     */
     public String bookStoreBookInfo(){
         String bookInfo = "";
         for(int i = 0; i < books.length; i ++){
@@ -115,6 +138,9 @@ public class BookStore{
         return bookInfo;
     } 
 
+    /*
+     * Returns a String about users by looping through each item in users and using userInfo()
+     */
     public String bookStoreUserInfo(){
         String userInfo = "";
         for(int i = 0; i < users.length; i ++){
