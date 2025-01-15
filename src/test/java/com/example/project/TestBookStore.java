@@ -63,7 +63,6 @@ public class TestBookStore {
         store.consolidateUsers();
         User[] expected = {x,y,null,null};
         assertArrayEquals(expected, store.getUsers(),"consolidate() did not work");
-
     }
 
     @Test

@@ -1,24 +1,64 @@
 package com.example.project;
+import java.util.Arrays;
 
 public class User{
-    //requires 3 private attributes String name, String Id, Book book that is initialized to empty
+    //String variables contain user's name and ID and a book array listing the books they're reading
+    private String name;
+    private String Id;
+    private Book[] book = new Book[5];
 
-    //requires 1 contructor with two parameters that will initialize the name and id
+    //Constructor sets user's name and ID (ID is set up using IdGenerate.generateId())
+    public User(String name, String Id){
+        this.Id = Id;
+        this.name = name;
+    }
  
-    // public  getName() {}
+    //Returns name
+    public String getName(){
+        return name;
+    }
 
-    // public  setName() {}
+    //Changes name to parameter
+    public void setName(String newName){
+        name = newName;
+    }
 
-    // public  getId() {}
+    //Returns Id
+    public String getId(){
+        return Id;
+    }
 
-    // public void setId() {}
+    //Changes Id to parameter
+    public void setId(String newId){
+        Id = newId;
+    }
 
-    // public getBooks() {}
+    //Returns book
+    public Book[] getBooks(){
+        return book;
+    }
 
-    // public setBooks() {}
+    //Sets book to parameter
+    public void setBooks(Book[] newBook){
+        book = newBook;
+    }
 
-    // public String bookListInfo(){} //returns a booklist for the user, if empty, output "empty"
+    //Returns a string detailing user's book list using bookInfo(). If an item in user's book list is null, string will say "empty" 
+    public String bookListInfo(){
+        String bookInfo = "\n";
+        for(int i = 0; i < book.length; i ++){
+            if(book[i] == null){
+                bookInfo += "empty\n";
+            }
+            else{
+                bookInfo += book[i].bookInfo() + "\n";
+            }
+        }
+        return bookInfo;
+    } 
 
-    // public String userInfo(){} //returns  "Name: []\nID: []\nBooks:\n[]"
-       
+    //Returns a string detailing user's name, id, and book list using bookListInfo()
+    public String userInfo(){
+        return "Name: " + name + "\nId: " + Id + "\nBooks: " + bookListInfo();
+    } 
 }

@@ -1,30 +1,74 @@
 package com.example.project;
 
 public class Book{
-    //requires 5 attributes String title, String author, int yearPublished, String isbn, int quantity
+    //Private instance variables, each detailing information about the book's attributes 
+    private String title;
+    private String author;
+    private int yearPublished;
+    private String isbn;
+    private int quantity;
 
-    //requires 1 constructor with 5 arguments that intitialize the attribtues of the class.
+    //Constructor sets private instance variables to values
+    public Book(String title, String author, int yearPublished, String isbn, int quantity){
+        this.title = title;
+        this.author = author;
+        this.yearPublished = yearPublished;
+        this.isbn = isbn;
+        this.quantity = quantity;
+    }
 
-    // public  getTitle() {}
+    //Returns title
+    public String getTitle(){
+        return title;
+    }
+    
+    //Changes title to the parameter  
+    public void setTitle(String newTitle){
+        title = newTitle;
+    }
 
-    // public setTitle() {}
+    //Returns author
+    public String getAuthor(){
+        return author;
+    }
 
-    // public getAuthor() {}
+    //Changes author to the parameter  
+    public void setAuthor(String newAuthor){
+        author = newAuthor;
+    }
 
-    // public setAuthor() {}
+    //Returns yearPublished
+    public int getYearPublished(){
+        return yearPublished;
+    }
 
-    // public getYearPublished() {}
+    //Changes yearPublished to parameter
+    public void setYearPublished(int newYearPublished){
+        yearPublished = newYearPublished;
+    }
 
-    // public setYearPublished() {}
+    //Returns isbn
+    public String getIsbn(){
+        return isbn;
+    }
 
-    // public getIsbn() {}
+    //Changes isbn to parameter
+    public void setIsbn(String newIsbn){
+        isbn = newIsbn;
+    }
 
-    // public void setIsbn() {}
+    //Returns quantity
+    public int getQuantity(){
+        return quantity;
+    }
 
-    // public int getQuantity() {}
+    //Changes quantity to parameter
+    public void setQuantity(int newQuantity){
+        quantity = newQuantity;
+    }
 
-    // public void setQuantity() {}
-
-    // public  bookInfo(){} //returns "Title: [], Author: [], Year: [], ISBN: [], Quantity: []"
-       
+    //Returns a string detailing all the values of the instance variables  
+    public String bookInfo(){
+        return "Title: " + title + ", Author: " + author + ", Year: " + yearPublished + ", ISBN: " + isbn + ", Quantity: " + quantity;
+    }
 }
